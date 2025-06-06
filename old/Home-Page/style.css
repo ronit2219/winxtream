@@ -1,0 +1,242 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a2c38;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #152431;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4cc9f0;
+    margin-right: 25px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #4cc9f0;
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-balance {
+    background-color: rgba(76, 201, 240, 0.1);
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(76, 201, 240, 0.3);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+   
+}
+/* This is for login and signup button that is created for temp basis */
+.nav-button {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    background-color: transparent;
+    
+}
+
+.nav-button:hover,
+.nav-button.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.signup-btn {
+    border-color: #4cc9f0;
+    color: #4cc9f0;
+}
+
+.signup-btn:hover {
+    background-color: #4cc9f0;
+    color: #152431;
+}
+/* this login and signup button ends here */
+
+.wallet-icon {
+    color: #4cc9f0;
+}
+
+/* User info styling */
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#username-display {
+    color: #4cc9f0;
+    font-weight: bold;
+}
+
+/* Game Cards Container */
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-card {
+    background-color: #2C2C2C;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.game-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.game-card-content {
+    padding: 15px;
+}
+
+.game-card-content h3 {
+    color: white;
+    font-size: 18px;
+}
+
+.game-card a:link {
+    text-decoration: none;
+
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.game-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.play-icon {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 24px;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1E1E1E;
+    padding: 20px;
+    text-align: center;
+    /* position: sticky; */
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+
+
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-buttons {
+        margin-top: 10px;
+    }
+
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}

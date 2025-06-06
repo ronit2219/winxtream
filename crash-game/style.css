@@ -1,0 +1,478 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a2c38;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.game-container {
+    max-width: 1400px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4cc9f0;
+    margin-right: 25px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #4cc9f0;
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-balance {
+    background-color: rgba(76, 201, 240, 0.1);
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(76, 201, 240, 0.3);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wallet-icon {
+    color: #4cc9f0;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.game-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.game-description {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.game-display {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.multiplier {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #00e701;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(0, 231, 1, 0.5);
+}
+
+.game-status {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 10;
+}
+
+.rocket-container {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    transition: bottom 0.1s linear;
+}
+
+.rocket {
+    width: 60px;
+    height: 120px;
+    position: relative;
+}
+
+.rocket-body {
+    width: 40px;
+    height: 80px;
+    background-color: #00e701;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+
+.rocket-tip {
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.rocket-window {
+    width: 15px;
+    height: 15px;
+    background-color: #1a2c38;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 22.5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.rocket-fin-left,
+.rocket-fin-right {
+    width: 15px;
+    height: 25px;
+    background-color: #444;
+    position: absolute;
+    bottom: 0;
+}
+
+.rocket-fin-left {
+    left: -5px;
+    border-radius: 0 0 0 10px;
+}
+
+.rocket-fin-right {
+    right: -5px;
+    border-radius: 0 0 10px 0;
+}
+
+.flame {
+    width: 30px;
+    height: 50px;
+    background: linear-gradient(to bottom, #ffbe0b, #fb5607);
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+    bottom: -50px;
+    left: 15px;
+    animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        height: 40px;
+        opacity: 0.8;
+    }
+
+    100% {
+        height: 50px;
+        opacity: 1;
+    }
+}
+
+.explosion {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #ff006e, #fb5607);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+    flex: 1;
+}
+
+.controls {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bet-controls,
+.game-controls {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00e701;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+.bet-btn {
+    background-color: #00e701;
+    color: #1a2c38;
+}
+
+.bet-btn:hover {
+    background-color: #00c001;
+}
+
+.bet-btn:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.cashout-btn {
+    background-color: #ff006e;
+    color: white;
+}
+
+.cashout-btn:hover {
+    background-color: #d9005d;
+}
+
+.cashout-btn:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.controls-flex {
+    display: flex;
+    gap: 10px;
+}
+
+.controls-flex>div {
+    flex: 1;
+}
+
+.history {
+    margin-top: 20px;
+}
+
+.history-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.history-item {
+    width: 56px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.history-crash {
+    background-color: rgba(255, 0, 110, 0.3);
+    border: 1px solid #ff006e;
+    color: #ff006e;
+}
+
+.history-cashout {
+    background-color: rgba(0, 231, 1, 0.3);
+    border: 1px solid #00e701;
+    color: #00e701;
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.notification.success {
+    background-color: #00e701;
+}
+
+.notification.error {
+    background-color: #ff006e;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: scale(0.1) translate(-50%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2) translate(-25%, -25%);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .game-display {
+        height: 60vh;
+    }
+
+    .multiplier {
+        font-size: 36px;
+        top: 20px;
+    }
+
+    .game-status {
+        top: 70px;
+        font-size: 20px;
+    }
+
+    .controls-flex {
+        flex-direction: column;
+    }
+
+    .wallet-balance {
+        font-size: 14px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+}
+
+.navbar {
+    background-color: #152431;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}

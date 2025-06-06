@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a2c38;
+    color: white;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #152431;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4cc9f0;
+    margin-right: 25px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #4cc9f0;
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-balance {
+    background-color: rgba(76, 201, 240, 0.1);
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(76, 201, 240, 0.3);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wallet-icon {
+    color: #4cc9f0;
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.game-container {
+    background-color: #1e3548;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.game-header {
+    background-color: #142430;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-title {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-icon {
+    color: #01c27e;
+}
+
+.game-content {
+    padding: 15px;
+}
+
+.game-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.control-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.control-label {
+    font-size: 11px;
+    color: #8b98a5;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.control-input {
+    width: 100%;
+    background-color: #15232f;
+    border: 1px solid #253b4e;
+    border-radius: 4px;
+    color: white;
+    padding: 8px 12px;
+    font-size: 12px;
+    transition: border-color 0.3s;
+}
+
+.control-input:focus {
+    outline: none;
+    border-color: #01c27e;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.bet-btn {
+    background-color: #01c27e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 80px;
+}
+
+.bet-btn:hover {
+    background-color: #00a167;
+    transform: translateY(-2px);
+}
+
+.bet-btn:disabled {
+    background-color: #253b4e;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cashout-btn {
+    background-color: #ff4949;
+    flex: 1;
+}
+
+.cashout-btn:hover {
+    background-color: #e03f3f;
+}
+
+.current-bet-info {
+    display: flex;
+    justify-content: space-between;
+    background-color: #15232f;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    text-align: center;
+    flex: 1;
+}
+
+.info-label {
+    font-size: 10px;
+    color: #8b98a5;
+    margin-bottom: 2px;
+}
+
+.info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.info-value.profit {
+    color: #01c27e;
+}
+
+.mines-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.mine-cell {
+    aspect-ratio: 1/1;
+    background-color: #15232f;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.mine-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #1b2f3d;
+}
+
+.mine-cell.revealed {
+    pointer-events: none;
+}
+
+.mine-cell.diamond {
+    background-color: #164054;
+}
+
+.mine-cell.mine {
+    background-color: #481818;
+}
+
+.cell-content {
+    font-size: 18px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mine-cell.revealed .cell-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.cell-multiplier {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #01c27e;
+}
+
+.explosion {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #ff4d4d 0%, transparent 70%);
+    opacity: 0;
+    animation: explode 0.8s forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.diamond-shine {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #01c27e 0%, transparent 70%);
+    opacity: 0;
+    animation: shine 0.8s forwards;
+}
+
+@keyframes shine {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.game-history {
+    display: none;
+}
+
+.history-header {
+    display: none;
+}
+
+.history-content {
+    display: none;
+}
+
+.history-item {
+    display: none;
+}
+
+.history-item.win {
+    display: none;
+}
+
+.history-item.loss {
+    display: none;
+}
+
+.notification {
+    position: fixed;
+    top: 60px;
+    right: 15px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    background-color: #01c27e;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 100;
+    font-size: 12px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.error {
+    background-color: #ff4949;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .game-controls {
+        flex-direction: column;
+    }
+
+    .current-bet-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .mines-grid {
+        gap: 4px;
+    }
+}

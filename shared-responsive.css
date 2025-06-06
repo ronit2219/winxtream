@@ -1,0 +1,316 @@
+/* Shared Responsive CSS for WinXtream Game Pages */
+
+/* Hide the mobile menu toggle by default (desktop view) */
+.mobile-menu-toggle {
+  display: none;
+}
+
+/* General responsive styles for all screens below 1000px */
+@media (max-width: 1000px) {
+  /* General adjustments */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  body {
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Prevent horizontal scrolling */
+  .navbar, 
+  .game-container,
+  .game-content,
+  .main-container,
+  .content-container {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Base Mobile Styles - Only apply to screens smaller than 768px */
+@media (max-width: 767px) {
+  /* Header and Navigation */
+  .navbar {
+    position: relative;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .logo-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .logo img {
+    max-width: 150px;
+    height: auto;
+  }
+  
+  /* Hamburger Menu */
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.95);
+    z-index: 999;
+    padding-top: 60px;
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 15px;
+    margin: 5px 0;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Wallet Display */
+  .wallet-section {
+    position: static;
+    width: 100%;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  
+  .wallet-balance {
+    margin: 5px 0;
+    font-size: 16px;
+    text-align: center;
+    width: auto;
+    padding: 5px;
+  }
+  
+  /* Game specific adjustments */
+  .game-container {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .game-grid, 
+  .game-content,
+  .game-controls,
+  .mines-grid,
+  .control-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .game-display {
+    height: auto;
+    min-height: 250px;
+  }
+  
+  .controls {
+    width: 100%;
+  }
+  
+  .bet-controls,
+  .game-controls,
+  .history {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .control-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .control-buttons button {
+    width: 48%;
+  }
+  
+  /* Ensure buttons are large enough for touch */
+  button {
+    min-height: 44px;
+  }
+}
+
+/* Game-specific mobile styles */
+@media (max-width: 767px) {
+  /* Roulette Game */
+  .content-container {
+    padding: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .game-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .betting-panel {
+    flex-direction: column;
+  }
+  
+  .bet-panel, .history-panel {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .bet-input {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bet-input input, 
+  .bet-input button {
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  /* Mines Game */
+  .mines-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+  
+  .mine-tile {
+    height: 50px !important;
+    width: 100% !important;
+    max-width: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .info-item {
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .current-bet-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Crash Game */
+  .game-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .controls-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .controls-flex button {
+    width: 48%;
+  }
+  
+  .game-display {
+    height: 250px;
+  }
+  
+  /* Color Trading Game */
+  .color-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .color-btn {
+    min-width: 80px;
+    margin: 5px;
+    padding: 10px;
+  }
+  
+  .bet-section {
+    max-width: 100%;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .bet-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .logo img {
+    max-width: 120px;
+  }
+  
+  .wallet-balance {
+    font-size: 14px;
+  }
+  
+  .game-title {
+    font-size: 22px;
+  }
+  
+  .mobile-menu-toggle {
+    top: 10px;
+    right: 10px;
+  }
+} 
